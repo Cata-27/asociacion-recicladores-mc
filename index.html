@@ -8,9 +8,9 @@
   <meta property="og:title" content="Asociación de Recicladores MC E.S.P." />
   <meta property="og:description" content="Aprovechamiento de residuos con responsabilidad social y ambiental en Barrancabermeja." />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="assets/img/logo.webp" />
+  <meta property="og:image" content="assets/img/logo-hd.webp" />
   <meta name="theme-color" content="#14306e" />
-  <link rel="icon" type="image/png" href="assets/img/favicon.png" />
+  <link rel="icon" type="image/png" href="assets/img/favicon-hd.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -70,7 +70,7 @@
 <header class="header" id="top">
   <div class="container header__inner">
     <a href="#inicio" class="brand" aria-label="Asociación de Recicladores MC E.S.P. – Inicio">
-      <img class="brand__mark" src="assets/img/logo.webp" alt="" width="46" height="46" />
+      <img class="brand__mark" src="assets/img/logo-hd.webp" alt="" width="46" height="46" />
       <span class="brand__text"><span class="brand__name">Asociación de Recicladores MC</span><span class="brand__sub">E.S.P. · Barrancabermeja</span></span>
     </a>
 
@@ -121,7 +121,7 @@
       </div>
       <div class="hero__logo" aria-hidden="true">
         <span class="hero__ring"></span>
-        <img src="assets/img/logo.webp" alt="" width="320" height="320" />
+        <img src="assets/img/logo-hd.webp" alt="" width="320" height="320" />
       </div>
     </div>
     <div class="container">
@@ -158,60 +158,92 @@
   </section>
 
   <!-- Nosotros -->
-  <section class="section section--alt" id="nosotros">
+  <section class="section section--alt about" id="nosotros">
     <div class="container">
       <header class="section__head">
         <p class="section__kicker">Nosotros</p>
         <h2>Una organización de recicladores de oficio, formal y comprometida con Barrancabermeja</h2>
       </header>
-      <div class="tabs" role="tablist" aria-label="Información institucional">
+
+      <div class="tabbar" role="tablist" aria-label="Información institucional">
+        <span class="tabbar__indicator" aria-hidden="true"></span>
         <button class="tab is-active" role="tab" data-tab="quienes">Quiénes somos</button>
         <button class="tab" role="tab" data-tab="resena">Reseña</button>
         <button class="tab" role="tab" data-tab="mision">Misión y visión</button>
         <button class="tab" role="tab" data-tab="valores">Valores</button>
       </div>
+
+      <!-- Quiénes somos -->
       <div class="tab-panel is-active" id="tab-quienes">
-        <div class="grid grid--2-1">
-          <div class="prose">
-            <p>La <strong>Asociación de Recicladores MC E.S.P.</strong> es una entidad sin ánimo de lucro constituida en 2021 en Barrancabermeja, Santander, que agrupa a recicladores de oficio y presta el servicio público de aseo en la actividad complementaria de <strong>aprovechamiento</strong>, en el marco del Decreto 596 de 2016.</p>
-            <p>Nuestra operación cubre la recolección, el transporte, la clasificación, el pesaje y la comercialización de material aprovechable proveniente de hogares, comercios, instituciones e industria. El material se procesa en nuestra Estación de Clasificación y Aprovechamiento (ECA) y se reincorpora al ciclo productivo.</p>
+        <div class="about__grid">
+          <div>
+            <p class="about__lead">La <strong>Asociación de Recicladores MC E.S.P.</strong> es una entidad sin ánimo de lucro constituida en 2021 en Barrancabermeja, Santander, que agrupa a recicladores de oficio y presta el servicio público de aseo en la actividad complementaria de <strong>aprovechamiento</strong>, en el marco del Decreto 596 de 2016.</p>
+            <p class="prose">Nuestra operación cubre la recolección, el transporte, la clasificación, el pesaje y la comercialización de material aprovechable proveniente de hogares, comercios, instituciones e industria. El material se procesa en nuestra Estación de Clasificación y Aprovechamiento (ECA) y se reincorpora al ciclo productivo.</p>
+            <ul class="highlights">
+              <li><svg class="ico"><use href="#i-users"/></svg><div><strong>Recicladores de oficio</strong><span>Familias barranqueñas organizadas alrededor de un trabajo digno.</span></div></li>
+              <li><svg class="ico"><use href="#i-sort"/></svg><div><strong>ECA propia</strong><span>Clasificación y pesaje en nuestra estación de la Carrera 34 # 61-71.</span></div></li>
+              <li><svg class="ico"><use href="#i-shield"/></svg><div><strong>Prestador vigilado</strong><span>Inscrito ante la Superintendencia de Servicios Públicos Domiciliarios.</span></div></li>
+            </ul>
           </div>
-          <dl class="datasheet">
-            <div><dt>Razón social</dt><dd>Asociación de Recicladores MC E.S.P.</dd></div>
-            <div><dt>NIT</dt><dd>901.495.042-1</dd></div>
-            <div><dt>Naturaleza</dt><dd>Entidad sin ánimo de lucro</dd></div>
-            <div><dt>Constitución</dt><dd>21 de junio de 2021</dd></div>
-            <div><dt>Registro</dt><dd>Cámara de Comercio de Barrancabermeja</dd></div>
-            <div><dt>Representante legal</dt><dd>Rol Mary Castaño</dd></div>
-          </dl>
+          <div class="datacard">
+            <div class="datacard__head">
+              <img src="assets/img/logo-hd.webp" alt="" width="56" height="56" />
+              <div><strong>Ficha institucional</strong><span>Datos de registro</span></div>
+            </div>
+            <dl class="datacard__list">
+              <div><dt>Razón social</dt><dd>Asociación de Recicladores MC E.S.P.</dd></div>
+              <div><dt>NIT</dt><dd>901.495.042-1</dd></div>
+              <div><dt>Naturaleza</dt><dd>Entidad sin ánimo de lucro</dd></div>
+              <div><dt>Constitución</dt><dd>21 de junio de 2021</dd></div>
+              <div><dt>Registro</dt><dd>Cámara de Comercio de Barrancabermeja</dd></div>
+              <div><dt>Representante legal</dt><dd>Rol Mary Castaño</dd></div>
+            </dl>
+          </div>
         </div>
       </div>
+
+      <!-- Reseña -->
       <div class="tab-panel" id="tab-resena">
-        <div class="prose prose--narrow">
-          <p>La asociación nace de la decisión de un grupo de recicladores de oficio de Barrancabermeja de organizarse y formalizar una labor que venían desempeñando de manera individual. En junio de 2021 se constituye legalmente como entidad sin ánimo de lucro y como prestador del servicio público de aprovechamiento.</p>
-          <p>Desde entonces ha fortalecido su operación logística y su capacidad de clasificación, y participa en iniciativas ciudadanas de reciclaje en la ciudad, entre ellas la <strong>Gran Reciclatón</strong> realizada en 2025 en articulación con Veolia y el Centro Comercial San Silvestre.</p>
+        <div class="about__grid about__grid--rev">
+          <ol class="timeline">
+            <li><span class="timeline__year">2021</span><h3>Constitución legal</h3><p>Un grupo de recicladores de oficio de Barrancabermeja decide organizarse y formalizar la labor que venía desempeñando de manera individual. En junio se constituye la asociación como entidad sin ánimo de lucro y prestador del servicio público de aprovechamiento.</p></li>
+            <li><span class="timeline__year">2022 – 2024</span><h3>Consolidación operativa</h3><p>Se fortalece la logística de recolección por sectores y la capacidad de clasificación y pesaje en la Estación de Clasificación y Aprovechamiento.</p></li>
+            <li><span class="timeline__year">2025</span><h3>Gran Reciclatón</h3><p>Participación en la jornada ciudadana de reciclaje realizada en articulación con Veolia y el Centro Comercial San Silvestre, acercando la separación en la fuente a la comunidad.</p></li>
+            <li><span class="timeline__year">Hoy</span><h3>Servicio en crecimiento</h3><p>Ampliamos cobertura y trabajamos en la formación ambiental de hogares, colegios y empresas de la ciudad.</p></li>
+          </ol>
+          <aside class="quote">
+            <svg class="quote__mark" viewBox="0 0 24 24" aria-hidden="true"><path d="M7 7h4v4H8v3h3v3H5v-6a4 4 0 0 1 2-4zm9 0h4v4h-3v3h3v3h-6v-6a4 4 0 0 1 2-4z" fill="currentColor"/></svg>
+            <p>Formalizar el oficio del reciclador es reconocer que detrás de cada tonelada recuperada hay una familia y una ciudad más limpia.</p>
+            <span>Asociación de Recicladores MC E.S.P.</span>
+          </aside>
         </div>
       </div>
+
+      <!-- Misión y visión -->
       <div class="tab-panel" id="tab-mision">
         <div class="grid grid--2">
-          <article class="card">
-            <h3>Misión</h3>
+          <article class="mv mv--navy">
+            <svg class="mv__icon"><use href="#i-recycle"/></svg>
+            <p class="mv__kicker">Misión</p>
             <p>Prestar el servicio público de aprovechamiento de residuos sólidos en Barrancabermeja con criterios de calidad, eficiencia y responsabilidad social y ambiental, mejorando las condiciones de vida de los recicladores asociados y promoviendo en la comunidad hábitos de separación en la fuente.</p>
           </article>
-          <article class="card">
-            <h3>Visión</h3>
+          <article class="mv mv--green">
+            <svg class="mv__icon"><use href="#i-leaf"/></svg>
+            <p class="mv__kicker">Visión</p>
             <p>Ser en 2030 la organización de recicladores de referencia en el Magdalena Medio por la calidad de su servicio, la dignificación del oficio y su contribución a la economía circular de la región.</p>
           </article>
         </div>
       </div>
+
+      <!-- Valores -->
       <div class="tab-panel" id="tab-valores">
         <ul class="values">
-          <li><svg class="ico"><use href="#i-check"/></svg><div><strong>Responsabilidad</strong><span>con el ambiente, los usuarios y los asociados.</span></div></li>
-          <li><svg class="ico"><use href="#i-check"/></svg><div><strong>Transparencia</strong><span>en el pesaje, la comercialización y la rendición de cuentas.</span></div></li>
-          <li><svg class="ico"><use href="#i-check"/></svg><div><strong>Solidaridad</strong><span>entre asociados y con la comunidad.</span></div></li>
-          <li><svg class="ico"><use href="#i-check"/></svg><div><strong>Respeto</strong><span>por el oficio del reciclador y por las personas que atendemos.</span></div></li>
+          <li><svg class="ico"><use href="#i-shield"/></svg><div><strong>Responsabilidad</strong><span>con el ambiente, los usuarios y los asociados.</span></div></li>
+          <li><svg class="ico"><use href="#i-scale"/></svg><div><strong>Transparencia</strong><span>en el pesaje, la comercialización y la rendición de cuentas.</span></div></li>
+          <li><svg class="ico"><use href="#i-users"/></svg><div><strong>Solidaridad</strong><span>entre asociados y con la comunidad.</span></div></li>
+          <li><svg class="ico"><use href="#i-leaf"/></svg><div><strong>Respeto</strong><span>por el oficio del reciclador y por las personas que atendemos.</span></div></li>
           <li><svg class="ico"><use href="#i-check"/></svg><div><strong>Compromiso</strong><span>con la calidad del servicio y la mejora continua.</span></div></li>
-          <li><svg class="ico"><use href="#i-check"/></svg><div><strong>Legalidad</strong><span>cumplimiento de la normativa del servicio público de aseo.</span></div></li>
+          <li><svg class="ico"><use href="#i-certificate"/></svg><div><strong>Legalidad</strong><span>cumplimiento de la normativa del servicio público de aseo.</span></div></li>
         </ul>
       </div>
     </div>
@@ -501,7 +533,7 @@
 <footer class="footer">
   <div class="container footer__grid">
     <div class="footer__brand">
-      <img class="brand__mark" src="assets/img/logo.webp" alt="" width="56" height="56" />
+      <img class="brand__mark" src="assets/img/logo-hd.webp" alt="" width="56" height="56" />
       <p><strong>Asociación de Recicladores MC E.S.P.</strong><br>NIT 901.495.042-1<br>Carrera 34 # 61-71, Barrancabermeja, Santander</p>
     </div>
     <div>
