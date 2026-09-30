@@ -22,9 +22,6 @@
     { cat: "vidrio", emoji: "💻", name: "RAEE (electrónicos)", desc: "Computadores, celulares, cables. Coordinamos recolección especial." },
   ];
 
-  // kg CO2 evitado por kg reciclado (estimaciones EPA WARM / literatura)
-  const CO2_FACTORS = { hierro: 1.5, aluminio: 9.0, cobre: 3.5, papel: 0.9, plastico: 1.5, vidrio: 0.3 };
-
   const ROUTES = [
     { r: "MC-01", sector: "Comuna 1 · Centro", barrios: ["Centro", "Colombia", "Cardales", "Buenos Aires", "Palmira", "Isla del Zapato"], dias: ["Lunes", "Jueves"], franja: "7:00 – 11:00 a.m." },
     { r: "MC-02", sector: "Comuna 2 · Nororiente", barrios: ["Galán", "Primero de Mayo", "El Cerro", "Uribe Uribe", "Villarelys", "Torcoroma"], dias: ["Martes", "Viernes"], franja: "7:00 – 11:00 a.m." },
@@ -122,21 +119,6 @@
     renderMaterials(c.dataset.filter);
   }));
 
-  /* ---------- Calculadora ---------- */
-  const calcForm = $("#calcForm");
-  function calc() {
-    let co2 = 0, total = 0;
-    new FormData(calcForm).forEach((v, k) => {
-      const kg = Math.max(0, parseFloat(v) || 0);
-      total += kg; co2 += kg * (CO2_FACTORS[k] || 0);
-    });
-    $("#co2").textContent = co2.toFixed(1);
-    $("#trees").textContent = (co2 / 22).toFixed(2); // ~22 kg CO2 absorbe un árbol al año
-    $("#total").textContent = total.toFixed(1);
-  }
-  calcForm.addEventListener("input", calc);
-  calcForm.addEventListener("submit", (e) => e.preventDefault());
-
   /* ---------- Solicitud de recolección ---------- */
   $("#pickupForm").addEventListener("submit", (e) => {
     e.preventDefault();
@@ -183,14 +165,6 @@
     const n = String(Math.floor(Math.random() * 900000) + 100000);
     return `MC-${y}-${n}`;
   }
-  function renderMyPqrs() {
-    const list = loadPqrs();
-    const ul = $("#myPqrs");
-    ul.innerHTML = list.length
-      ? list.map((p) => `<li><button data-rad="${p.radicado}">${p.radicado}</button> · ${esc(p.tipo)} · ${fmtDate(p.fecha)}</li>`).join("")
-      : '<li class="muted">Aún no has radicado PQRS.</li>';
-    $$("button[data-rad]", ul).forEach((b) => b.addEventListener("click", () => { $("#trackForm").radicado.value = b.dataset.rad; showTrack(b.dataset.rad); }));
-  }
   function showTrack(rad) {
     const p = loadPqrs().find((x) => x.radicado === rad.trim().toUpperCase());
     const box = $("#trackResult");
@@ -207,7 +181,6 @@
     const d = Object.fromEntries(new FormData(f));
     const p = { radicado: newRadicado(), fecha: new Date().toISOString(), estado: "Radicada", ...d };
     savePqrs([p, ...loadPqrs()]);
-    renderMyPqrs();
     setMsg(f, "", "");
     f.reset();
     const text = `*PQRS ${p.radicado}*\nTipo: ${p.tipo}\nNombre: ${p.nombre}\nDocumento: ${p.documento}\nTel: ${p.telefono}\nCorreo: ${p.correo || "-"}\nDirección: ${p.direccion || "-"}\n\n${p.descripcion}`;
@@ -217,7 +190,6 @@
     $("#modalOk").addEventListener("click", closeModal);
   });
   $("#trackForm").addEventListener("submit", (e) => { e.preventDefault(); showTrack(e.target.radicado.value); });
-  renderMyPqrs();
 
   /* ---------- Rutas ---------- */
   const body = $("#routesBody"), search = $("#routeSearch"), daySel = $("#routeDay");
