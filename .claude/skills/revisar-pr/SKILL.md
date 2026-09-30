@@ -43,8 +43,8 @@ El usuario abre la PR; tú la revisas y le dices con claridad **qué se puede su
    ```
 
 6. **Actuar en GitHub:**
-   - ✅ → `gh pr review <n> --approve --body "<resumen>"`.
-   - ⚠️/❌ → `gh pr review <n> --request-changes --body "<lista de bloqueantes>"`. No aprobar.
+   - ✅ → `gh pr review <n> --approve --body "<resumen>"`. GitHub **no permite aprobar una PR abierta por la misma cuenta**; en ese caso usar `gh pr review <n> --comment --body "**Revisión: ✅ Se puede subir** ..."` como aprobación formal.
+   - ⚠️/❌ → `gh pr review <n> --request-changes --body "<lista de bloqueantes>"` (o `--comment` si es la misma cuenta). No aprobar.
    - Merge solo si el usuario lo pide: `gh pr merge <n> --squash --delete-branch` para `feature/* → dev`; `--merge` (sin squash) para `dev → main` para conservar historial.
 
 7. Si la PR va a `main`, recordar que Vercel/GitHub Pages publican solos en 1-2 min y que la clienta lo verá.
