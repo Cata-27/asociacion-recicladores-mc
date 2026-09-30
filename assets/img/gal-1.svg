@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#3e8e2f"/><stop offset="1" stop-color="#8cc63f"/></linearGradient></defs>
+<rect width="800" height="600" fill="url(#g)"/>
+<circle cx="120" cy="100" r="140" fill="#fff" opacity=".08"/>
+<circle cx="650" cy="480" r="180" fill="#fff" opacity=".08"/>
+<text x="400" y="290" font-size="150" text-anchor="middle">🚚</text>
+<text x="400" y="400" font-family="Montserrat,Arial,sans-serif" font-weight="700" font-size="34" fill="#fff" text-anchor="middle">Recolección puerta a puerta</text>
+<text x="400" y="445" font-family="Arial,sans-serif" font-size="20" fill="#fff" opacity=".85" text-anchor="middle">Asociación de Recicladores MC E.S.P. · Barrancabermeja</text>
+<text x="400" y="560" font-family="Arial,sans-serif" font-size="16" fill="#fff" opacity=".6" text-anchor="middle">Imagen ilustrativa — reemplazar por fotografía real</text>
+</svg>
