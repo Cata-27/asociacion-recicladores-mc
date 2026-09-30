@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Recicladores MC">
+  <circle cx="32" cy="32" r="31" fill="#14306e"/>
+  <circle cx="32" cy="32" r="25.5" fill="none" stroke="#8bc34a" stroke-width="2.5"/>
+  <path d="M32 9.5c-2.6 3.4-2.4 6.4 0 9.6 2.4-3.2 2.6-6.2 0-9.6z" fill="#8bc34a"/>
+  <text x="32" y="40.5" text-anchor="middle" font-family="Montserrat, Arial, Helvetica, sans-serif" font-weight="800" font-size="21" fill="#ffffff" letter-spacing="-0.5">MC</text>
+</svg>
