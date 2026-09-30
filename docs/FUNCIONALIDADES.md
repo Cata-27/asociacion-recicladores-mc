@@ -8,7 +8,7 @@
 - Archivos: `index.html` (estructura y contenido), `styles.css` (diseño), `app.js` (comportamiento), `assets/` (imágenes y PDFs).
 - Fuentes: Google Fonts (Manrope), cargada por CDN.
 - Íconos: SVG en línea (sprite `<symbol>` al inicio de `index.html`). No se usan emojis ni librerías de íconos.
-- Marca: logotipo oficial en alta resolución (`assets/img/logo.webp`, 640 px, fondo transparente). Fuente: `docs/referencias/logo-hd-fuente.jpg`, al que se le eliminó el fondo de cuadros. Se usa en cabecera, inicio y pie. Si llega una versión vectorial (SVG), reemplazar ese archivo.
+- Marca: logotipo oficial en alta resolución (`assets/img/logo-hd.webp`, 640 px, fondo transparente). Fuente: `docs/referencias/logo-hd-fuente.jpg`, al que se le eliminó el fondo de cuadros. Se usa en cabecera, inicio y pie. Si llega una versión vectorial (SVG), reemplazar ese archivo.
 - Hosting: **Vercel** (URL para la clienta) y GitHub Pages (respaldo). Ambos se actualizan solos al hacer push a `main`.
 
 ## Funcionalidades
@@ -16,7 +16,7 @@
 | # | Funcionalidad | Dónde | Cómo funciona | Estado |
 |---|---|---|---|---|
 | 1 | Menú responsive con dropdown "Nosotros" | `index.html` header · `app.js` "Navegación" | Mobile-first: en móvil/tablet (<1024 px) es un panel lateral con botón hamburguesa, fondo oscurecido, cierre con Esc o tocando fuera. En escritorio el dropdown abre al pasar el mouse. El enlace activo se resalta según la sección visible. | ✅ |
-| 2 | Pestañas Nosotros (Quiénes somos, Reseña, Misión, Visión, Valores) | `#institucional` · `app.js` "Tabs" | Botones que muestran/ocultan paneles. Los enlaces del dropdown también activan la pestaña correspondiente. | ✅ textos por validar |
+| 2 | Pestañas Nosotros (Quiénes somos, Reseña, Misión y visión, Valores) | `#nosotros` · `app.js` "Pestañas Nosotros" | Barra de pestañas con indicador deslizante; cada panel entra con animación. Quiénes somos: texto + destacados con íconos + ficha institucional. Reseña: línea de tiempo + cita. Misión y visión: tarjetas con degradado. Valores: rejilla de 6 tarjetas con hover. Los enlaces del menú activan la pestaña correspondiente. | ✅ textos por validar |
 | 3 | Servicios (6 tarjetas) | `#servicios` | Contenido estático. | ✅ |
 | 4 | Materiales filtrables | `#materiales` · `app.js` `MATERIALS` | Lista de 12 materiales en un arreglo JS; los chips filtran por categoría (metal, papel, plástico, vidrio/otros). Para agregar un material: añadir un objeto al arreglo `MATERIALS`. | ✅ lista por validar |
 | 5 | Guía de bolsas (blanca/negra/verde) | `#materiales` | Estático, según Resolución 2184 de 2019. | ✅ |
@@ -42,7 +42,7 @@
 | Materiales | `app.js` → arreglo `MATERIALS` |
 | Rutas | `app.js` → arreglo `ROUTES` |
 | Fotos de galería | Subir a `assets/img/` y actualizar `app.js` → arreglo `GALLERY` (hoy hay marcadores neutros `gal-*.svg`) |
-| Logotipo | Reemplazar `assets/img/logo.webp` (cuadrado, fondo transparente) y `assets/img/favicon.png` |
+| Logotipo | Reemplazar `assets/img/logo-hd.webp` (cuadrado, fondo transparente) y `assets/img/favicon-hd.png`. **Importante:** los assets se sirven con caché de 7 días; al cambiar una imagen, cambiar también su nombre de archivo (ej. `logo-v3.webp`) para que los navegadores descarguen la nueva. |
 | PDFs | Reemplazar en `assets/docs/` con el mismo nombre |
 | Colores | `styles.css` → variables al inicio (`:root`) |
 
