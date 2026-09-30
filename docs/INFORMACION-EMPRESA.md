@@ -44,25 +44,24 @@ Como E.S.P., además **factura el componente de aprovechamiento** dentro de la f
 
 ## 3. Lo que la página debe transmitir
 
-**Mensaje central:** *"Tu chatarra y tu reciclaje tienen valor."*
-Idea de fondo: lo que otros ven como basura, aquí se convierte en trabajo digno para familias barranqueñas y en una ciudad más limpia.
+**Posicionamiento:** empresa de servicios públicos, formal y vigilada, conformada por recicladores de oficio. No es una "chatarrería" en el sentido comercial: es un prestador del servicio de aprovechamiento con responsabilidad social y ambiental.
 
-**Tres promesas al visitante:**
-- ⚖️ **Peso justo, pago justo** — báscula a la vista, pago inmediato.
-- 🚚 **Vamos hasta tu puerta** — recolección a domicilio, coordinada por WhatsApp.
-- 🤝 **Recicladores de oficio** — orgullo por el trabajo, formalidad, comunidad.
+**Mensaje central (hero):** *"Aprovechamiento de residuos con responsabilidad social y ambiental."*
 
-**Tono:** cercano y directo (tuteo), orgulloso pero sin grandilocuencia, serio en lo legal (documentos, PQRS, facturación). Evitar sonar a ONG genérica; es un negocio real que compra material y presta un servicio público.
+**Tres compromisos:**
+- Gestión ambiental responsable — menos residuos al relleno sanitario, más material de vuelta a la industria.
+- Dignificación del oficio — reconocimiento y remuneración justa del reciclador dentro del servicio público de aseo.
+- Cultura ciudadana — formación en separación en la fuente a hogares, colegios y empresas.
+
+**Tono:** institucional y sobrio. Trato de **usted**. Sin emojis, sin cifras que no estén verificadas, sin promesas ("próximamente"). Vocabulario del sector: aprovechamiento, ECA, separación en la fuente, RUPS, CRA, SSPD.
+
+**Identidad visual:** azul marino (#14306e) como color principal, verde (#2f7d32) para acciones, lima (#8bc34a) solo como acento. Tipografía Manrope. Íconos de línea SVG. Logotipo vectorial "MC" (el logo fotográfico no se usa por su baja calidad).
 
 **Públicos:**
-1. **Personas / hogares** que quieren vender chatarra o sacar reciclaje → quieren saber *qué reciben, cuánto pagan, cómo pedir recolección*.
-2. **Empresas, talleres, comercios** → quieren *certificados, recolección periódica, gestión de residuos*.
-3. **Usuarios del servicio** (facturación) → quieren *pagar, entender el cobro, radicar PQRS*.
-4. **Entidades / aliados** (Veolia, Alcaldía, SSPD) → quieren ver *formalidad y documentos*.
-
-**Frase de cierre / banner:** *"Lo que para otros es basura, para nosotros es futuro."*
-
----
+1. **Usuarios residenciales** → rutas, cómo separar, solicitar recolección.
+2. **Empresas e instituciones** → certificados, gestión de residuos, capacitaciones.
+3. **Usuarios facturados** → cómo se cobra el aprovechamiento, PQRS.
+4. **Entidades y aliados** (SSPD, Alcaldía, Veolia) → documentos y formalidad.
 
 ## 4. Estructura del sitio (v. actual)
 

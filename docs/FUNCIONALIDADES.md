@@ -6,14 +6,16 @@
 
 - **HTML + CSS + JavaScript puro.** Sin frameworks, sin build, sin dependencias de npm. Se abre directamente o con cualquier servidor estático.
 - Archivos: `index.html` (estructura y contenido), `styles.css` (diseño), `app.js` (comportamiento), `assets/` (imágenes y PDFs).
-- Fuentes: Google Fonts (Montserrat + Open Sans), cargadas por CDN.
+- Fuentes: Google Fonts (Manrope), cargada por CDN.
+- Íconos: SVG en línea (sprite `<symbol>` al inicio de `index.html`). No se usan emojis ni librerías de íconos.
+- Marca: logotipo vectorial (`assets/img/logo.svg`, y en línea en el header). El logo fotográfico original se conserva en `docs/referencias/` solo como referencia; no se usa en el sitio por su baja resolución.
 - Hosting: **Vercel** (URL para la clienta) y GitHub Pages (respaldo). Ambos se actualizan solos al hacer push a `main`.
 
 ## Funcionalidades
 
 | # | Funcionalidad | Dónde | Cómo funciona | Estado |
 |---|---|---|---|---|
-| 1 | Menú responsive con dropdown "Nosotros" | `index.html` header · `app.js` "Navegación" | En escritorio el dropdown abre al pasar el mouse; en móvil (<1100 px) se convierte en panel lateral con botón hamburguesa. El enlace activo se resalta según la sección visible (IntersectionObserver). | ✅ |
+| 1 | Menú responsive con dropdown "Nosotros" | `index.html` header · `app.js` "Navegación" | Mobile-first: en móvil/tablet (<1024 px) es un panel lateral con botón hamburguesa, fondo oscurecido, cierre con Esc o tocando fuera. En escritorio el dropdown abre al pasar el mouse. El enlace activo se resalta según la sección visible. | ✅ |
 | 2 | Pestañas Nosotros (Quiénes somos, Reseña, Misión, Visión, Valores) | `#institucional` · `app.js` "Tabs" | Botones que muestran/ocultan paneles. Los enlaces del dropdown también activan la pestaña correspondiente. | ✅ textos por validar |
 | 3 | Servicios (6 tarjetas) | `#servicios` | Contenido estático. | ✅ |
 | 4 | Materiales filtrables | `#materiales` · `app.js` `MATERIALS` | Lista de 12 materiales en un arreglo JS; los chips filtran por categoría (metal, papel, plástico, vidrio/otros). Para agregar un material: añadir un objeto al arreglo `MATERIALS`. | ✅ lista por validar |
@@ -22,7 +24,7 @@
 | 7 | Solicitar recolección | `#solicitar` · `app.js` "Solicitud de recolección" | Formulario con validación en el navegador. Al enviar, arma un mensaje con los datos y abre WhatsApp (`wa.me/573203023519`) con el texto listo. **No guarda nada en servidor.** | ✅ (MVP) |
 | 8 | Documentos descargables | `#documentacion` · `assets/docs/*.pdf` | Enlaces directos a PDFs. Reemplazar los archivos manteniendo el mismo nombre y no hay que tocar código. | ⚠️ PDFs de muestra |
 | 9 | Sede con mapa | `#ecas` | Google Maps embebido (iframe gratuito, sin API key) + botón "Cómo llegar". | ✅ horario por confirmar |
-| 10 | Rutas de recolección con buscador | `#rutas` · `app.js` `ROUTES` | Tabla generada desde el arreglo `ROUTES`. Buscador por barrio (ignora tildes) y filtro por día. Para editar rutas: modificar el arreglo. | ⚠️ datos inventados |
+| 10 | Rutas de recolección con buscador | `#rutas` · `app.js` `ROUTES` | Tabla generada desde el arreglo `ROUTES`. Buscador por barrio (ignora tildes) y filtro por día. En móvil cada fila se muestra como tarjeta (CSS `data-label`). Para editar rutas: modificar el arreglo. | ⚠️ datos inventados |
 | 11 | Galería con lightbox | `#galeria` · `app.js` `GALLERY` | Cuadrícula generada desde el arreglo `GALLERY`; clic abre visor a pantalla completa con flechas y teclado (←, →, Esc). | ⚠️ ilustraciones |
 | 12 | Contacto | `#contacto` | Formulario → WhatsApp, igual que el #7. | ✅ falta correo |
 | 13 | Pague su factura | `#factura` | Explicación de cómo se cobra el aprovechamiento + consulta de cuenta por WhatsApp. | ⚠️ sin pasarela |
@@ -39,7 +41,8 @@
 | Dirección, NIT, textos | `index.html`, buscar el texto |
 | Materiales | `app.js` → arreglo `MATERIALS` |
 | Rutas | `app.js` → arreglo `ROUTES` |
-| Fotos de galería | Subir a `assets/img/` y actualizar `app.js` → arreglo `GALLERY` |
+| Fotos de galería | Subir a `assets/img/` y actualizar `app.js` → arreglo `GALLERY` (hoy hay marcadores neutros `gal-*.svg`) |
+| Logotipo | `assets/img/logo.svg` y el `<svg class="brand__mark">` del header/footer. Si la asociación entrega un logo vectorial oficial, reemplazarlos |
 | PDFs | Reemplazar en `assets/docs/` con el mismo nombre |
 | Colores | `styles.css` → variables al inicio (`:root`) |
 
