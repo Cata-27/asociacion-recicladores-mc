@@ -100,11 +100,25 @@
   $$("main section[id]").forEach((s) => spy.observe(s));
 
   /* ---------- Pestañas Nosotros ---------- */
+  const indicator = $(".tabbar__indicator");
+  function moveIndicator() {
+    const t = $(".tab.is-active"); if (!t || !indicator) return;
+    indicator.style.left = t.offsetLeft + "px"; indicator.style.width = t.offsetWidth + "px";
+  }
   function activateTab(id) {
     $$(".tab").forEach((t) => t.classList.toggle("is-active", t.dataset.tab === id));
-    $$(".tab-panel").forEach((p) => p.classList.toggle("is-active", p.id === "tab-" + id));
+    $$(".tab-panel").forEach((p) => {
+      const on = p.id === "tab-" + id;
+      p.classList.toggle("is-active", on);
+      if (on) $$(".reveal", p).forEach((el) => el.classList.add("is-visible"));
+    });
+    moveIndicator();
+    const t = $(`.tab[data-tab="${id}"]`); if (t) t.scrollIntoView({ block: "nearest", inline: "center", behavior: "smooth" });
   }
   $$(".tab").forEach((t) => t.addEventListener("click", () => activateTab(t.dataset.tab)));
+  window.addEventListener("resize", moveIndicator);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(moveIndicator); else moveIndicator();
+  moveIndicator();
 
   /* ---------- Materiales ---------- */
   const grid = $("#materialsGrid");
@@ -218,7 +232,7 @@
   });
 
   /* ---------- Aparición al hacer scroll ---------- */
-  const REVEAL = ".section__head, .feature, .service, .card, .datasheet, .values li, .bag, .steps li, .table-wrap, .place, .docs li, .gallery button, .info-list, .trust";
+  const REVEAL = ".section__head, .feature, .service, .card, .datacard, .highlights li, .timeline li, .quote, .mv, .values li, .bag, .steps li, .table-wrap, .place, .docs li, .gallery button, .info-list, .trust";
   const groups = new Map();
   $$(REVEAL).forEach((el) => {
     el.classList.add("reveal");
