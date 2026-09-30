@@ -12,7 +12,7 @@ Flujo: `feature/x` → PR → revisión (`/revisar-pr`) → merge a `dev` → cu
 
 ## Link temporal (mientras no hay dominio)
 
-**Vercel** — https://asociacion-recicladores-mc.vercel.app (la URL exacta la asigna Vercel al importar el proyecto).
+**Vercel** — https://asociacion-recicladores-mc.vercel.app (proyecto importado el 30/09/2026 en la cuenta Vercel `sharikcperez28-2531`, enlazada al GitHub Cata-27).
 Gratis, con HTTPS, no se apaga, y se redepliega solo con cada push a `main`. Además crea una URL de vista previa por cada PR, útil para revisar antes de aprobar.
 
 Respaldo: GitHub Pages en https://cata-27.github.io/asociacion-recicladores-mc/ (mismo código, misma rama `main`).
