@@ -8,7 +8,7 @@
 - Archivos: `index.html` (estructura y contenido), `styles.css` (diseño), `app.js` (comportamiento), `assets/` (imágenes y PDFs).
 - Fuentes: Google Fonts (Manrope), cargada por CDN.
 - Íconos: SVG en línea (sprite `<symbol>` al inicio de `index.html`). No se usan emojis ni librerías de íconos.
-- Marca: logotipo oficial de la asociación (`assets/img/logo.webp`, 400 px, recorte circular y nitidez aplicados a la foto original que está en `docs/referencias/`). Se usa en cabecera, inicio y pie. Cuando la asociación entregue un logo en alta resolución o vectorial, reemplazar ese archivo.
+- Marca: logotipo oficial en alta resolución (`assets/img/logo.webp`, 640 px, fondo transparente). Fuente: `docs/referencias/logo-hd-fuente.jpg`, al que se le eliminó el fondo de cuadros. Se usa en cabecera, inicio y pie. Si llega una versión vectorial (SVG), reemplazar ese archivo.
 - Hosting: **Vercel** (URL para la clienta) y GitHub Pages (respaldo). Ambos se actualizan solos al hacer push a `main`.
 
 ## Funcionalidades
