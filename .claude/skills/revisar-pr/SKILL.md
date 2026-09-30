@@ -21,7 +21,7 @@ El usuario abre la PR; tú la revisas y le dices con claridad **qué se puede su
    - **Seguridad / datos:** claves, tokens o contraseñas en el código; datos personales reales de terceros; `innerHTML` con texto de usuario sin escapar (usar `esc()`).
    - **Archivos pesados:** imágenes > 300 KB, PDFs > 5 MB, videos. Rechazar y remitir a `docs/FUNCIONALIDADES.md` → "Manejo de espacio".
    - **Contenido:** textos con errores de ortografía, datos que contradigan `docs/INFORMACION-EMPRESA.md`, teléfono/NIT distintos a los verificados, cosas que suenen artificiales o exageradas.
-   - **Consistencia:** mismos colores/variables de `styles.css`, mismo tono (tuteo), responsive (revisar que no haya anchos fijos).
+   - **Consistencia:** mismos colores/variables de `styles.css`, mismo tono (institucional, trato de usted), responsive (revisar que no haya anchos fijos).
    - **Documentación:** si agrega o cambia una funcionalidad, `docs/FUNCIONALIDADES.md` debe actualizarse en la misma PR.
 
 4. **Probar** si el cambio es visual o de comportamiento: levantar `python -m http.server 8765` en la rama de la PR (`gh pr checkout <n>`), abrir en el navegador integrado, revisar escritorio y móvil, y leer la consola. Volver a la rama anterior al terminar.
