@@ -217,5 +217,19 @@
     if (nav.classList.contains("is-open") && e.key === "Escape") setNav(false);
   });
 
+  /* ---------- Aparición al hacer scroll ---------- */
+  const REVEAL = ".section__head, .feature, .service, .card, .datasheet, .values li, .bag, .steps li, .table-wrap, .place, .docs li, .gallery button, .info-list, .trust";
+  const groups = new Map();
+  $$(REVEAL).forEach((el) => {
+    el.classList.add("reveal");
+    const parent = el.parentElement, i = (groups.get(parent) || 0);
+    groups.set(parent, i + 1);
+    el.style.setProperty("--d", `${Math.min(i, 5) * 0.08}s`);
+  });
+  const revealer = new IntersectionObserver((entries) => entries.forEach((en) => {
+    if (en.isIntersecting) { en.target.classList.add("is-visible"); revealer.unobserve(en.target); }
+  }), { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
+  $$(".reveal").forEach((el) => revealer.observe(el));
+
   $("#year").textContent = new Date().getFullYear();
 })();

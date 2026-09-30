@@ -8,7 +8,7 @@
 - Archivos: `index.html` (estructura y contenido), `styles.css` (diseño), `app.js` (comportamiento), `assets/` (imágenes y PDFs).
 - Fuentes: Google Fonts (Manrope), cargada por CDN.
 - Íconos: SVG en línea (sprite `<symbol>` al inicio de `index.html`). No se usan emojis ni librerías de íconos.
-- Marca: logotipo vectorial (`assets/img/logo.svg`, y en línea en el header). El logo fotográfico original se conserva en `docs/referencias/` solo como referencia; no se usa en el sitio por su baja resolución.
+- Marca: logotipo oficial de la asociación (`assets/img/logo.webp`, 400 px, recorte circular y nitidez aplicados a la foto original que está en `docs/referencias/`). Se usa en cabecera, inicio y pie. Cuando la asociación entregue un logo en alta resolución o vectorial, reemplazar ese archivo.
 - Hosting: **Vercel** (URL para la clienta) y GitHub Pages (respaldo). Ambos se actualizan solos al hacer push a `main`.
 
 ## Funcionalidades
@@ -30,7 +30,7 @@
 | 13 | Pague su factura | `#factura` | Explicación de cómo se cobra el aprovechamiento + consulta de cuenta por WhatsApp. | ⚠️ sin pasarela |
 | 14 | PQRS con radicado | `#pqrs` · `app.js` "PQRS" | Al radicar, genera un número `MC-AAAA-NNNNNN`, lo muestra en un modal y ofrece enviar copia por WhatsApp. El radicado se guarda en el `localStorage` del navegador del usuario (solo él puede consultarlo desde ese mismo equipo). | ⚠️ sin backend |
 | 15 | Botón flotante de WhatsApp | global | Enlace `wa.me` con mensaje predefinido. | ✅ |
-| 16 | Animaciones de aparición | `.reveal` · `app.js` | IntersectionObserver añade la clase `visible` al entrar en pantalla. Se desactivan si el usuario tiene "reducir movimiento". | ✅ |
+| 16 | Animaciones | `.reveal` · `app.js` "Aparición al hacer scroll" · `styles.css` | Entrada del hero al cargar (título, texto, botones y logo con anillo animado) y aparición suave de tarjetas, listas y bloques al entrar en pantalla, con escalonado por grupo. Sutiles y sin loops llamativos. Se desactivan con "reducir movimiento". | ✅ |
 | 17 | SEO básico | `<head>` | Título, descripción, Open Graph, favicon, `theme-color`. | ✅ |
 
 ## Cómo editar contenido sin saber programar
@@ -42,7 +42,7 @@
 | Materiales | `app.js` → arreglo `MATERIALS` |
 | Rutas | `app.js` → arreglo `ROUTES` |
 | Fotos de galería | Subir a `assets/img/` y actualizar `app.js` → arreglo `GALLERY` (hoy hay marcadores neutros `gal-*.svg`) |
-| Logotipo | `assets/img/logo.svg` y el `<svg class="brand__mark">` del header/footer. Si la asociación entrega un logo vectorial oficial, reemplazarlos |
+| Logotipo | Reemplazar `assets/img/logo.webp` (cuadrado, fondo transparente) y `assets/img/favicon.png` |
 | PDFs | Reemplazar en `assets/docs/` con el mismo nombre |
 | Colores | `styles.css` → variables al inicio (`:root`) |
 
