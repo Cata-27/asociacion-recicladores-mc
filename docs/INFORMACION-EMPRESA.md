@@ -102,7 +102,7 @@ Fuente: `docs/clienta/2026-10-06 cambios solicitados.docx` y correos de Rol Mary
 | "Únete a nuestra ruta verde" | ✅ el formulario de recolección pasó a ser la inscripción a la ruta verde |
 | Contador de visitas | ✅ en el pie |
 | Rutas de recolección reales | ⏳ la clienta las enviará |
-| Número principal nuevo y número secundario "el de Mary" | ⏳ pendiente de la clienta |
+| Números | ⏳ **Principal:** el de la señora que envió los documentos (aún no se tiene) → va en `CONTACT.MAIN`. **Secundario (recolección / ruta verde):** el de Mary, 320 302 3519 → `CONTACT.PICKUP`. Hoy ambos apuntan al 320 302 3519. |
 | Fotos: ECA, materiales (chatarra), "Nuestra labor" | ⏳ pendientes |
 | Logo vectorial (PDF en curvas) y mascota | ✅ recibidos; guardados en docs/clienta. **La mascota NO se usa en el sitio** (indicación de la clienta). |
 
