@@ -56,6 +56,7 @@
 </svg>
 
 <a class="skip" href="#inicio">Ir al contenido</a>
+<div class="progress" aria-hidden="true"><span id="progressBar"></span></div>
 
 <!-- Barra superior -->
 <div class="topbar">
@@ -117,9 +118,10 @@
         <h1>Aprovechamiento de residuos sólidos aprovechables</h1>
         <p class="hero__lead">Somos una asociación de recicladores de oficio de Barrancabermeja. Recolectamos, clasificamos y comercializamos material reciclable, reduciendo lo que llega al relleno sanitario y generando trabajo digno para nuestras familias asociadas.</p>
         <div class="hero__actions">
-          <a href="#solicitar" class="btn btn--primary">Solicitar recolección</a>
+          <a href="#solicitar" class="btn btn--primary btn--shine">Solicitar recolección</a>
           <a href="#servicios" class="btn btn--outline">Conocer los servicios</a>
         </div>
+        <a href="#servicios" class="scroll-cue" aria-label="Desplazarse hacia abajo"><span></span></a>
       </div>
       <div class="hero__logo" aria-hidden="true">
         <span class="hero__ring"></span>
@@ -135,6 +137,14 @@
       </ul>
     </div>
   </section>
+
+  <!-- Cinta -->
+  <div class="marquee" aria-hidden="true">
+    <div class="marquee__track">
+      <span>Cartón</span><i></i><span>Papel</span><i></i><span>PET</span><i></i><span>Plástico rígido</span><i></i><span>Aluminio</span><i></i><span>Chatarra</span><i></i><span>Latas</span><i></i><span>Cobre</span><i></i><span>Vidrio</span><i></i><span>Separación en la fuente</span><i></i><span>Recicladores de oficio</span><i></i><span>Barrancabermeja</span><i></i>
+      <span>Cartón</span><i></i><span>Papel</span><i></i><span>PET</span><i></i><span>Plástico rígido</span><i></i><span>Aluminio</span><i></i><span>Chatarra</span><i></i><span>Latas</span><i></i><span>Cobre</span><i></i><span>Vidrio</span><i></i><span>Separación en la fuente</span><i></i><span>Recicladores de oficio</span><i></i><span>Barrancabermeja</span><i></i>
+    </div>
+  </div>
 
   <!-- Compromisos -->
   <section class="section">
@@ -307,11 +317,19 @@
         <p class="section__kicker">Cómo funciona</p>
         <h2>Tres pasos para hacer parte del aprovechamiento</h2>
       </header>
-      <ol class="steps">
+      <div class="process__grid">
+      <div class="assemble"><svg class="recycle-draw" viewBox="0 0 200 200" aria-hidden="true">
+  <g class="arrow arrow-1"><path class="arc" d="M109.5 32.7 A68 68 0 0 1 167.6 107.1"/><path class="head" d="M165.7 117.6 L181.8 105.7 L153.9 103.8 Z"/></g>
+  <g class="arrow arrow-2"><path class="arc" d="M153.6 141.9 A68 68 0 0 1 60.0 155.0"/><path class="head" d="M51.9 148.1 L54.1 168.0 L69.8 144.8 Z"/></g>
+  <g class="arrow arrow-3"><path class="arc" d="M37.0 125.5 A68 68 0 0 1 72.3 37.9"/><path class="head" d="M82.4 34.3 L64.1 26.3 L76.3 51.5 Z"/></g>
+  <circle class="core" cx="100" cy="100" r="30"/><text class="core-text" x="100" y="106" text-anchor="middle">MC</text>
+</svg><p class="assemble__caption">Cada flecha se completa con su paso</p></div>
+      <ol class="steps"><span class="steps__line" aria-hidden="true"></span>
         <li><span class="steps__n">1</span><h3>Separe en la fuente</h3><p>Reúna el material aprovechable en bolsa blanca, limpio y seco, aparte de los residuos ordinarios.</p></li>
         <li><span class="steps__n">2</span><h3>Entregue el material</h3><p>Sáquelo el día de la ruta de su sector, solicite una recolección o llévelo a nuestra sede.</p></li>
         <li><span class="steps__n">3</span><h3>Aprovechamiento y certificación</h3><p>Pesamos, clasificamos y reincorporamos el material al ciclo productivo. Las empresas reciben certificado.</p></li>
       </ol>
+      </div>
     </div>
   </section>
 
