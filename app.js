@@ -2,7 +2,22 @@
 (function () {
   "use strict";
 
-  const WA_NUMBER = "573203023519";
+  /* ---------- Números de contacto (cambiar solo aquí) ----------
+     MAIN: número principal (contacto, pie, barra superior, botón flotante, PQRS, factura).
+     PICKUP: número para solicitudes de recolección / ruta verde (secundario, el de Mary). */
+  const CONTACT = {
+    MAIN:   { e164: "573203023519", display: "320 302 3519" },   // PENDIENTE: reemplazar por el número de la señora que envió los documentos
+    PICKUP: { e164: "573203023519", display: "320 302 3519" },   // Mary
+  };
+  const WA_NUMBER = CONTACT.MAIN.e164;
+  const waLinkTo = (num, text) => `https://wa.me/${num}?text=${encodeURIComponent(text)}`;
+  // Rellena todos los enlaces marcados con data-contact="main|pickup" y data-kind="tel|wa|text"
+  document.querySelectorAll("[data-contact]").forEach((el) => {
+    const c = CONTACT[el.dataset.contact === "pickup" ? "PICKUP" : "MAIN"];
+    if (el.dataset.kind === "tel") { el.href = `tel:+${c.e164}`; if (!el.dataset.keep) el.textContent = el.dataset.prefix ? el.dataset.prefix + c.display : c.display; }
+    else if (el.dataset.kind === "wa") { const u = new URL(el.href); el.href = `https://wa.me/${c.e164}` + (u.search || ""); }
+    else el.textContent = c.display;
+  });
   const $ = (s, c = document) => c.querySelector(s);
   const $$ = (s, c = document) => [...c.querySelectorAll(s)];
 
@@ -197,7 +212,7 @@
     const d = Object.fromEntries(new FormData(f));
     const mats = $$("input[name=mat]:checked", f).map((c) => c.value).join(", ") || "No especificado";
     const text = `SOLICITUD – RUTA VERDE\n\nNombre: ${d.nombre}\nTeléfono: ${d.telefono}\nTipo de usuario: ${d.tipo}\nBarrio: ${d.barrio}\nDirección: ${d.direccion}\nMaterial: ${mats}\nObservaciones: ${d.obs || "-"}`;
-    window.open(waLink(text), "_blank", "noopener");
+    window.open(waLinkTo(CONTACT.PICKUP.e164, text), "_blank", "noopener");
     setMsg(f, "Se abrió WhatsApp con su solicitud. Gracias.", "ok");
     f.reset();
   });
