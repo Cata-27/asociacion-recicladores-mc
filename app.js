@@ -110,7 +110,7 @@
     $$(".tab-panel").forEach((p) => {
       const on = p.id === "tab-" + id;
       p.classList.toggle("is-active", on);
-      if (on) $$(".reveal", p).forEach((el) => el.classList.add("is-visible"));
+      if (on) { $$(".reveal", p).forEach((el) => el.classList.add("is-visible")); document.dispatchEvent(new CustomEvent("tab:activated", { detail: p })); }
     });
     moveIndicator();
     const t = $(`.tab[data-tab="${id}"]`); if (t) t.scrollIntoView({ block: "nearest", inline: "center", behavior: "smooth" });
@@ -231,19 +231,53 @@
     if (nav.classList.contains("is-open") && e.key === "Escape") setNav(false);
   });
 
-  /* ---------- Aparición al hacer scroll ---------- */
-  const REVEAL = ".section__head, .feature, .service, .card, .datacard, .highlights li, .timeline li, .quote, .mv, .values li, .bag, .steps li, .table-wrap, .place, .docs li, .gallery button, .info-list, .trust";
-  const groups = new Map();
-  $$(REVEAL).forEach((el) => {
-    el.classList.add("reveal");
-    const parent = el.parentElement, i = (groups.get(parent) || 0);
-    groups.set(parent, i + 1);
-    el.style.setProperty("--d", `${Math.min(i, 5) * 0.08}s`);
-  });
-  const revealer = new IntersectionObserver((entries) => entries.forEach((en) => {
-    if (en.isIntersecting) { en.target.classList.add("is-visible"); revealer.unobserve(en.target); }
-  }), { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
-  $$(".reveal").forEach((el) => revealer.observe(el));
+  /* ---------- Animaciones (GSAP + ScrollTrigger, con respaldo) ---------- */
+  const REVEAL = ".section__head, .feature, .service, .card, .datacard, .highlights li, .timeline li, .quote, .mv, .values li, .bag, .steps li, .table-wrap, .place, .docs li, .gallery button, .info-list, .trust, .band__inner > *";
+  // ?motion=1 fuerza las animaciones aunque el sistema pida "reducir movimiento" (solo para pruebas)
+  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches && !/[?&]motion=1/.test(location.search);
+  const header = $(".header");
+  const onScroll = () => header.classList.toggle("is-scrolled", window.scrollY > 8);
+  window.addEventListener("scroll", onScroll, { passive: true }); onScroll();
+
+  if (window.gsap && window.ScrollTrigger && !reduced) {
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.ticker.lagSmoothing(0); // que las animaciones terminen a tiempo aunque haya frames lentos al cargar
+    // La entrada del inicio va en CSS (keyframes), inmune a la carga de imágenes.
+
+    // Parallax suave en fondos fotográficos
+    $$(".bg img").forEach((img) => {
+      gsap.fromTo(img, { yPercent: -8 }, { yPercent: 8, ease: "none", scrollTrigger: { trigger: img.closest("section"), start: "top bottom", end: "bottom top", scrub: .6 } });
+    });
+
+    // Aparición escalonada (IntersectionObserver dispara; GSAP anima)
+    const items = $$(REVEAL).filter((el) => !el.closest(".hero"));
+    gsap.set(items, { y: 26, opacity: 0 });
+    const show = (els) => gsap.to(els, { y: 0, opacity: 1, duration: .8, stagger: .09, ease: "power3.out", overwrite: true });
+    let pending = [], flush = 0;
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach((en) => { if (en.isIntersecting) { pending.push(en.target); io.unobserve(en.target); } });
+      cancelAnimationFrame(flush);
+      flush = requestAnimationFrame(() => { if (pending.length) { show(pending); pending = []; } });
+    }, { threshold: .1, rootMargin: "0px 0px -8% 0px" });
+    items.forEach((el) => io.observe(el));
+    // Paneles de pestañas ocultos: mostrarlos al activarse
+    document.addEventListener("tab:activated", (e) => { const els = $$(REVEAL, e.detail); els.forEach((el) => io.unobserve(el)); show(els); });
+    ScrollTrigger.refresh();
+  } else {
+    // Respaldo sin GSAP: IntersectionObserver
+    const groups = new Map();
+    $$(REVEAL).forEach((el) => {
+      el.classList.add("reveal");
+      const parent = el.parentElement, i = (groups.get(parent) || 0);
+      groups.set(parent, i + 1);
+      el.style.setProperty("--d", `${Math.min(i, 5) * 0.08}s`);
+    });
+    const revealer = new IntersectionObserver((entries) => entries.forEach((en) => {
+      if (en.isIntersecting) { en.target.classList.add("is-visible"); revealer.unobserve(en.target); }
+    }), { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
+    $$(".reveal").forEach((el) => revealer.observe(el));
+  }
 
   $("#year").textContent = new Date().getFullYear();
 })();
