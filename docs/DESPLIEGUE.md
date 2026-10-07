@@ -29,6 +29,8 @@ El archivo `vercel.json` del repo ya trae cabeceras de seguridad y caché para l
 
 ## Dominio definitivo `.com.co`
 
+> Guía completa de compra y conexión en **`docs/DOMINIO.md`**. Resumen:
+
 Cuando la página esté terminada:
 
 1. Comprar el dominio (ej. `recicladoresmc.com.co`) en un registrador: [cointernet.com.co](https://www.cointernet.com.co) (registrador oficial de .co), GoDaddy, Namecheap u Hostinger. Costo aproximado: $60.000–$90.000 COP/año.

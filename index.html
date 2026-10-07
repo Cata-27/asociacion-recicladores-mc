@@ -108,7 +108,8 @@
 
 <main>
   <!-- Inicio -->
-  <section class="hero" id="inicio">
+  <section class="hero hero--photo" id="inicio">
+    <div class="bg" aria-hidden="true"><img src="assets/img/bg-comunidad.webp" srcset="assets/img/bg-comunidad-sm.webp 960w, assets/img/bg-comunidad.webp 1920w" sizes="100vw" alt="" fetchpriority="high" /></div>
     <div class="container hero__grid">
       <div class="hero__inner">
         <p class="hero__eyebrow">Servicio público de aseo · Actividad de aprovechamiento</p>
@@ -297,7 +298,8 @@
   </section>
 
   <!-- Cómo funciona -->
-  <section class="section section--dark" id="proceso">
+  <section class="section section--dark section--photo" id="proceso">
+    <div class="bg" aria-hidden="true"><img src="assets/img/bg-planta.webp" srcset="assets/img/bg-planta-sm.webp 960w, assets/img/bg-planta.webp 1920w" sizes="100vw" alt="" loading="lazy" /></div>
     <div class="container">
       <header class="section__head">
         <p class="section__kicker">Cómo funciona</p>
@@ -427,6 +429,22 @@
         <h2>Nuestra labor</h2>
       </header>
       <div class="gallery" id="gallery"></div>
+    </div>
+  </section>
+
+  <!-- Banda empresas -->
+  <section class="band" id="empresas">
+    <div class="bg" aria-hidden="true"><img src="assets/img/bg-materiales.webp" srcset="assets/img/bg-materiales-sm.webp 960w, assets/img/bg-materiales.webp 1920w" sizes="100vw" alt="" loading="lazy" /></div>
+    <div class="container band__inner">
+      <div>
+        <p class="section__kicker">Empresas e instituciones</p>
+        <h2>¿Su organización necesita certificar el aprovechamiento de sus residuos?</h2>
+        <p>Diseñamos el plan de manejo, instalamos puntos de acopio en su sede y entregamos certificados de aprovechamiento para sus informes ambientales.</p>
+      </div>
+      <div class="band__actions">
+        <a href="#contacto" class="btn btn--light">Solicitar asesoría</a>
+        <a href="#servicios" class="btn btn--ghost">Ver servicios</a>
+      </div>
     </div>
   </section>
 
@@ -568,6 +586,8 @@
   </div>
 </div>
 
-<script src="app.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+<script src="app.js" defer></script>
 </body>
 </html>
