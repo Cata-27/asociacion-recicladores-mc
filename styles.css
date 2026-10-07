@@ -311,13 +311,6 @@ input.invalid, select.invalid, textarea.invalid { border-color: #c53030; }
 .docs a { display: inline-flex; align-items: center; justify-content: center; gap: .4rem; padding: .55rem 1rem; border: 1.5px solid var(--line); border-radius: 8px; font-weight: 700; font-size: .875rem; color: var(--navy); white-space: nowrap; }
 .docs a:hover { background: var(--navy); color: #fff; border-color: var(--navy); text-decoration: none; }
 
-/* ---------- Mascota ---------- */
-.mascot { margin: 1.5rem 0 0; display: grid; justify-items: center; gap: .5rem; }
-.mascot img { width: min(260px, 70%); height: auto; filter: drop-shadow(0 14px 24px rgba(20,48,110,.18)); animation: mascot-float 5s ease-in-out infinite; }
-.mascot figcaption { font-size: .85rem; color: var(--ink-3); text-align: center; }
-@keyframes mascot-float { 50% { transform: translateY(-8px); } }
-@media (min-width: 1024px) { .mascot { justify-items: start; } .mascot figcaption { text-align: left; } }
-
 /* ---------- Eventos ---------- */
 .section__cta { margin: 1.25rem 0 0; }
 .events { display: grid; gap: 1.25rem; }
@@ -411,7 +404,7 @@ input.invalid, select.invalid, textarea.invalid { border-color: #c53030; }
 .reveal { opacity: 0; transform: translateY(18px); transition: opacity .6s ease, transform .6s ease; transition-delay: var(--d, 0s); }
 .reveal.is-visible { opacity: 1; transform: none; }
 
-@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } html { scroll-behavior: auto; } .reveal { opacity: 1; transform: none; } }
+/* Las animaciones permanecen activas aunque el sistema pida "reducir movimiento" (decisión de la clienta). */
 
 /* =========================================================
    Tablet  ≥ 640px
