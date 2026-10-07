@@ -47,7 +47,7 @@ Como E.S.P., además **factura el componente de aprovechamiento** dentro de la f
 
 **Posicionamiento:** empresa de servicios públicos, formal y vigilada, conformada por recicladores de oficio. No es una "chatarrería" en el sentido comercial: es un prestador del servicio de aprovechamiento con responsabilidad social y ambiental.
 
-**Mensaje central (hero):** *"Aprovechamiento de residuos con responsabilidad social y ambiental."*
+**Mensaje central (hero):** *"Aprovechamiento de residuos sólidos aprovechables"* (título definido por la clienta, 06/10/2026).
 
 **Tres compromisos:**
 - Gestión ambiental responsable — menos residuos al relleno sanitario, más material de vuelta a la industria.
@@ -104,7 +104,7 @@ Fuente: `docs/clienta/2026-10-06 cambios solicitados.docx` y correos de Rol Mary
 | Rutas de recolección reales | ⏳ la clienta las enviará |
 | Número principal nuevo y número secundario "el de Mary" | ⏳ pendiente de la clienta |
 | Fotos: ECA, materiales (chatarra), "Nuestra labor" | ⏳ pendientes |
-| Logo vectorial (PDF en curvas) y mascota | ✅ recibidos por correo; pendiente de incorporar |
+| Logo vectorial (PDF en curvas) y mascota | ✅ recibidos; guardados en docs/clienta. **La mascota NO se usa en el sitio** (indicación de la clienta). |
 
 ## 5. Preguntas para la clienta
 
