@@ -289,8 +289,8 @@
 
   /* ---------- Animaciones (GSAP + ScrollTrigger, con respaldo) ---------- */
   const REVEAL = ".section__head, .feature, .service, .card, .datacard, .event, .partner, .highlights li, .timeline li, .quote, .mv, .values li, .bag, .steps li, .table-wrap, .place, .docs li, .gallery button, .info-list, .trust, .band__inner > *";
-  // ?motion=1 fuerza las animaciones aunque el sistema pida "reducir movimiento" (solo para pruebas)
-  const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches && !/[?&]motion=1/.test(location.search);
+  // Las animaciones van siempre activas (decisión de la clienta). ?motion=0 las apaga solo para pruebas.
+  const reduced = /[?&]motion=0/.test(location.search);
   const header = $(".header");
   const onScroll = () => header.classList.toggle("is-scrolled", window.scrollY > 8);
   window.addEventListener("scroll", onScroll, { passive: true }); onScroll();
