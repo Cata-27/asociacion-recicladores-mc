@@ -21,8 +21,8 @@
 | 4 | Materiales filtrables | `#materiales` · `app.js` `MATERIALS` | Lista de 12 materiales en un arreglo JS; los chips filtran por categoría (metal, papel, plástico, vidrio/otros). Para agregar un material: añadir un objeto al arreglo `MATERIALS`. | ✅ lista por validar |
 | 5 | Guía de bolsas (blanca/negra/verde) | `#materiales` | Estático, según Resolución 2184 de 2019. | ✅ |
 | 6 | Cómo vender (3 pasos) | `#proceso` | Estático + botón a WhatsApp. | ✅ |
-| 7 | Solicitar recolección | `#solicitar` · `app.js` "Solicitud de recolección" | Formulario con validación en el navegador. Al enviar, arma un mensaje con los datos y abre WhatsApp (`wa.me/573203023519`) con el texto listo. **No guarda nada en servidor.** | ✅ (MVP) |
-| 8 | Documentos descargables | `#documentacion` · `assets/docs/*.pdf` | Enlaces directos a PDFs. Reemplazar los archivos manteniendo el mismo nombre y no hay que tocar código. | ⚠️ PDFs de muestra |
+| 7 | Únete a nuestra ruta verde (inscripción a recolección) | `#solicitar` · `app.js` | Formulario con validación. Al enviar, arma el mensaje y abre WhatsApp. **No guarda nada en servidor.** | ✅ (MVP) |
+| 8 | Documentos | `#documentos` · `app.js` `DOCS` | Lista generada desde el arreglo `DOCS`. Si el documento tiene `file`, botón PDF; si no, botón "Solicitar copia" que abre WhatsApp. Para publicar un PDF: guardarlo en `assets/docs/` y poner su ruta en `file`. | ✅ 4 PDF reales, 5 por recibir |
 | 9 | Sede con mapa | `#ecas` | Google Maps embebido (iframe gratuito, sin API key) + botón "Cómo llegar". | ✅ horario por confirmar |
 | 10 | Rutas de recolección con buscador | `#rutas` · `app.js` `ROUTES` | Tabla generada desde el arreglo `ROUTES`. Buscador por barrio (ignora tildes) y filtro por día. En móvil cada fila se muestra como tarjeta (CSS `data-label`). Para editar rutas: modificar el arreglo. | ⚠️ datos inventados |
 | 11 | Galería con lightbox | `#galeria` · `app.js` `GALLERY` | Cuadrícula generada desde el arreglo `GALLERY`; clic abre visor a pantalla completa con flechas y teclado (←, →, Esc). | ⚠️ ilustraciones |
@@ -33,7 +33,10 @@
 | 16 | Animaciones | `styles.css` keyframes · `app.js` "Animaciones" · GSAP 3.12 + ScrollTrigger (cdnjs) | Entrada del inicio en CSS puro (título, texto, botones, logo, franja de confianza). Con GSAP: parallax suave en los fondos fotográficos y aparición escalonada de tarjetas y bloques (IntersectionObserver dispara, GSAP anima). Si GSAP no carga o el usuario pide "reducir movimiento", hay respaldo con IntersectionObserver + CSS. `?motion=1` en la URL fuerza las animaciones para pruebas. | ✅ |
 | 17 | Fondos fotográficos | `.bg` en inicio, "Cómo funciona" y banda Empresas · `assets/img/bg-*.webp` | Imágenes generadas con IA (Higgsfield, gpt-image) en paleta azul/verde, sin personas identificables ni texto. Dos tamaños por imagen (`-sm` 960 px para móvil, 1920 px escritorio) vía `srcset`; capa oscura degradada encima para legibilidad. Reemplazables por fotos reales de la asociación con el mismo nombre + versión. | ✅ (IA, sustituir por fotos reales) |
 | 18 | Banda Empresas e instituciones | `#empresas` | Llamado a la acción para clientes corporativos (certificados, plan de manejo) con enlace a Contacto. | ✅ |
-| 19 | SEO básico | `<head>` | Título, descripción, Open Graph, favicon, `theme-color`. | ✅ |
+| 19 | Eventos | `#eventos` · `app.js` `EVENTS` | Tarjetas generadas desde el arreglo `EVENTS` (título, lugar, descripción, foto en `assets/img/eventos/`). Si la foto no existe, la tarjeta muestra un fondo neutro. | ✅ fotos por incorporar |
+| 20 | Aliados estratégicos | `#aliados` · `app.js` `PARTNERS` | Lista desde `PARTNERS`; con `logo` muestra la imagen (gris → color al pasar el mouse), sin logo muestra el nombre. | ✅ logos por recibir |
+| 21 | Contador de visitas | pie · `app.js` "Contador de visitas" | Servicio externo gratuito; suma una visita por sesión del navegador y muestra el total. Si el servicio no responde, el contador se oculta. | ✅ |
+| 22 | SEO básico | `<head>` | Título, descripción, Open Graph, favicon, `theme-color`. | ✅ |
 
 ## Cómo editar contenido sin saber programar
 

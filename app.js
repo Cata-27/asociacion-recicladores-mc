@@ -8,18 +8,46 @@
 
   /* ---------- Datos editables ---------- */
   const MATERIALS = [
-    { cat: "metal", icon: "i-metal", name: "Chatarra ferrosa", desc: "Varillas, láminas, tubería, estructuras." },
-    { cat: "metal", icon: "i-metal", name: "Aluminio", desc: "Latas, perfiles, utensilios de cocina." },
-    { cat: "metal", icon: "i-metal", name: "Cobre y bronce", desc: "Cables, tubería, motores, grifería." },
-    { cat: "metal", icon: "i-metal", name: "Baterías de plomo", desc: "De vehículos, cerradas y sin derrames." },
-    { cat: "papel", icon: "i-paper", name: "Cartón", desc: "Cajas y corrugado, seco y desarmado." },
-    { cat: "papel", icon: "i-paper", name: "Papel archivo", desc: "Hojas de oficina, cuadernos, sobres." },
-    { cat: "papel", icon: "i-paper", name: "Periódico y revistas", desc: "Prensa, revistas, plegables." },
-    { cat: "plastico", icon: "i-plastic", name: "PET", desc: "Botellas de bebidas, vacías y aplastadas." },
-    { cat: "plastico", icon: "i-plastic", name: "Plástico rígido", desc: "Envases de aseo, canastas, tapas." },
-    { cat: "plastico", icon: "i-plastic", name: "Plástico flexible", desc: "Bolsas y empaques limpios y secos." },
-    { cat: "vidrio", icon: "i-glass", name: "Vidrio", desc: "Botellas y frascos enteros, sin tapa." },
-    { cat: "vidrio", icon: "i-glass", name: "Residuos electrónicos", desc: "Equipos y cables. Recolección coordinada." },
+    { cat: "metal", icon: "i-metal", name: "Chatarra", desc: "Hierro, acero, estructuras y piezas metálicas." },
+    { cat: "metal", icon: "i-metal", name: "Latas", desc: "Latas de conservas, sardinas y bebidas." },
+    { cat: "metal", icon: "i-metal", name: "Aluminio", desc: "Perfiles, utensilios y envases." },
+    { cat: "metal", icon: "i-metal", name: "Cobre y bronce", desc: "Cables, tubería y piezas." },
+    { cat: "papel", icon: "i-paper", name: "Cartón", desc: "Cajas y corrugado, seco." },
+    { cat: "papel", icon: "i-paper", name: "Papel", desc: "Archivo, periódico y revistas." },
+    { cat: "plastico", icon: "i-plastic", name: "PET", desc: "Botellas de bebidas." },
+    { cat: "plastico", icon: "i-plastic", name: "Plástico rígido", desc: "Envases, canastas y tapas." },
+    { cat: "plastico", icon: "i-plastic", name: "Plástico flexible", desc: "Bolsas y empaques limpios." },
+    { cat: "vidrio", icon: "i-glass", name: "Vidrio", desc: "Botellas y frascos." },
+  ];
+
+  // Documentos: con `file` se descarga; sin `file` se solicita por WhatsApp hasta tener la versión digital
+  const DOCS = [
+    { name: "Portafolio de servicios", org: "Asociación de Recicladores MC E.S.P.", file: "assets/docs/portafolio-recicladores-mc.pdf" },
+    { name: "Certificado de existencia y representación legal", org: "Cámara de Comercio de Barrancabermeja", file: "assets/docs/camara-de-comercio.pdf" },
+    { name: "Registro Único de Prestadores (RUPS)", org: "Superintendencia de Servicios Públicos Domiciliarios", file: "assets/docs/rups.pdf" },
+    { name: "RUT vigente", org: "DIAN", file: "assets/docs/rut-2026.pdf" },
+    { name: "Contrato de condiciones uniformes y concepto de legalidad", org: "Servicio público de aseo – aprovechamiento", file: "assets/docs/ccu-concepto-de-legalidad.pdf" },
+    { name: "Certificado de permanencia", org: "Alcaldía de Barrancabermeja" },
+    { name: "Certificado de Negocios Verdes", org: "Autoridad ambiental" },
+    { name: "Concepto técnico de Bomberos", org: "Cuerpo de Bomberos de Barrancabermeja" },
+    { name: "Afiliación a ARL y pensión de los recicladores", org: "Seguridad social de los asociados" },
+    { name: "Certificados de competencia laboral", org: "SENA – recicladores de oficio" },
+  ];
+
+  // Eventos: fotos en assets/img/eventos/ (se agregan al recibirlas)
+  const EVENTS = [
+    { title: "Primer reciclatón comunitario de la comuna 3", place: "Barrio La Floresta", desc: "Jornada de separación en la fuente en la que los niños del barrio hicieron parte de la experiencia.", img: "assets/img/eventos/reciclaton-la-floresta.webp" },
+    { title: "Socialización con la Secretaría de Medio Ambiente y Transición Energética", place: "Barrancabermeja", desc: "Trabajo con la comunidad en compañía de la Secretaría de Medio Ambiente y Transición Energética.", img: "assets/img/eventos/socializacion-secretaria.webp" },
+    { title: "Socialización puerta a puerta", place: "Barrancabermeja", desc: "Sensibilización a hogares sobre separación en la fuente y entrega del material aprovechable.", img: "assets/img/eventos/puerta-a-puerta.webp" },
+    { title: "Capacitaciones a colegios y empresas", place: "Barrancabermeja", desc: "Formación en manejo de residuos aprovechables para instituciones educativas y empresas.", img: "assets/img/eventos/capacitaciones.webp" },
+    { title: "Adecuación de áreas comunes", place: "Barrancabermeja", desc: "Trabajo social con la comunidad en la adecuación de espacios comunes del barrio.", img: "assets/img/eventos/areas-comunes.webp" },
+  ];
+
+  // Aliados: con `logo` se muestra la imagen (assets/img/aliados/), sin logo se muestra el nombre
+  const PARTNERS = [
+    { name: "Secretaría de Medio Ambiente y Transición Energética", sub: "Alcaldía de Barrancabermeja" },
+    { name: "Veolia", sub: "Operador del servicio de aseo" },
+    { name: "Centro Comercial San Silvestre", sub: "Gran Reciclatón 2025" },
   ];
 
   const ROUTES = [
@@ -133,6 +161,34 @@
     renderMaterials(c.dataset.filter);
   }));
 
+  /* ---------- Documentos ---------- */
+  $("#docsList").innerHTML = DOCS.map((d) => d.file
+    ? `<li><div><strong>${esc(d.name)}</strong><span>${esc(d.org)}</span></div><a href="${d.file}" target="_blank" rel="noopener">PDF ${icon("i-download", "ico ico--sm")}</a></li>`
+    : `<li><div><strong>${esc(d.name)}</strong><span>${esc(d.org)}</span></div><a href="${waLink("Buen día. Solicito copia del documento: " + d.name)}" target="_blank" rel="noopener">Solicitar copia ${icon("i-whatsapp", "ico ico--sm")}</a></li>`).join("");
+
+  /* ---------- Eventos ---------- */
+  $("#events").innerHTML = EVENTS.map((ev) => `<article class="event">
+      <div class="event__media">${ev.img ? `<img src="${ev.img}" alt="${esc(ev.title)}" loading="lazy" />` : ""}</div>
+      <div class="event__body"><span class="event__place">${esc(ev.place)}</span><h3>${esc(ev.title)}</h3><p>${esc(ev.desc)}</p></div>
+    </article>`).join("");
+  $$(".event__media img").forEach((im) => im.addEventListener("error", () => { im.parentElement.classList.add("event__media--empty"); im.remove(); }));
+
+  /* ---------- Aliados ---------- */
+  $("#partners").innerHTML = PARTNERS.map((p) => `<li class="partner">${p.logo ? `<img src="${p.logo}" alt="${esc(p.name)}" loading="lazy" />` : `<span class="partner__name">${esc(p.name)}</span>`}<span class="partner__sub">${esc(p.sub || "")}</span></li>`).join("");
+
+  /* ---------- Contador de visitas ---------- */
+  (async () => {
+    try {
+      const mode = sessionStorage.getItem("mc_visit") ? "get" : "hit"; // una visita por sesión
+      const r = await fetch(`https://abacus.jasoncameron.dev/${mode}/recicladores-mc-esp/visitas`, { cache: "no-store" });
+      if (!r.ok) throw new Error("counter");
+      const data = await r.json();
+      sessionStorage.setItem("mc_visit", "1");
+      $("#visitsCount").textContent = new Intl.NumberFormat("es-CO").format(data.value);
+      $("#visits").hidden = false;
+    } catch (_) { /* sin contador si el servicio no responde */ }
+  })();
+
   /* ---------- Formularios → WhatsApp ---------- */
   $("#pickupForm").addEventListener("submit", (e) => {
     e.preventDefault();
@@ -140,7 +196,7 @@
     if (!validate(f)) return setMsg(f, "Por favor complete los campos marcados.", "err");
     const d = Object.fromEntries(new FormData(f));
     const mats = $$("input[name=mat]:checked", f).map((c) => c.value).join(", ") || "No especificado";
-    const text = `SOLICITUD DE RECOLECCIÓN\n\nNombre: ${d.nombre}\nTeléfono: ${d.telefono}\nTipo de usuario: ${d.tipo}\nBarrio: ${d.barrio}\nDirección: ${d.direccion}\nMaterial: ${mats}\nObservaciones: ${d.obs || "-"}`;
+    const text = `SOLICITUD – RUTA VERDE\n\nNombre: ${d.nombre}\nTeléfono: ${d.telefono}\nTipo de usuario: ${d.tipo}\nBarrio: ${d.barrio}\nDirección: ${d.direccion}\nMaterial: ${mats}\nObservaciones: ${d.obs || "-"}`;
     window.open(waLink(text), "_blank", "noopener");
     setMsg(f, "Se abrió WhatsApp con su solicitud. Gracias.", "ok");
     f.reset();
@@ -232,7 +288,7 @@
   });
 
   /* ---------- Animaciones (GSAP + ScrollTrigger, con respaldo) ---------- */
-  const REVEAL = ".section__head, .feature, .service, .card, .datacard, .highlights li, .timeline li, .quote, .mv, .values li, .bag, .steps li, .table-wrap, .place, .docs li, .gallery button, .info-list, .trust, .band__inner > *";
+  const REVEAL = ".section__head, .feature, .service, .card, .datacard, .event, .partner, .highlights li, .timeline li, .quote, .mv, .values li, .bag, .steps li, .table-wrap, .place, .docs li, .gallery button, .info-list, .trust, .band__inner > *";
   // ?motion=1 fuerza las animaciones aunque el sistema pida "reducir movimiento" (solo para pruebas)
   const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches && !/[?&]motion=1/.test(location.search);
   const header = $(".header");
