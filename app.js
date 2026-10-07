@@ -168,6 +168,7 @@
   function renderMaterials(filter) {
     grid.innerHTML = MATERIALS.filter((m) => filter === "todos" || m.cat === filter)
       .map((m) => `<article class="material" data-cat="${m.cat}">${icon(m.icon, "material__icon")}<h4>${esc(m.name)}</h4><p>${esc(m.desc)}</p></article>`).join("");
+    document.dispatchEvent(new CustomEvent("materials:rendered"));
   }
   renderMaterials("todos");
   $$(".chip").forEach((c) => c.addEventListener("click", () => {
@@ -199,8 +200,10 @@
       if (!r.ok) throw new Error("counter");
       const data = await r.json();
       sessionStorage.setItem("mc_visit", "1");
-      $("#visitsCount").textContent = new Intl.NumberFormat("es-CO").format(data.value);
       $("#visits").hidden = false;
+      const el = $("#visitsCount"), fmt = new Intl.NumberFormat("es-CO");
+      if (window.gsap) { const o = { v: 0 }; gsap.to(o, { v: data.value, duration: 1.6, ease: "power2.out", onUpdate: () => { el.textContent = fmt.format(Math.round(o.v)); } }); }
+      else el.textContent = fmt.format(data.value);
     } catch (_) { /* sin contador si el servicio no responde */ }
   })();
 
@@ -314,7 +317,67 @@
     gsap.registerPlugin(ScrollTrigger);
 
     gsap.ticker.lagSmoothing(0); // que las animaciones terminen a tiempo aunque haya frames lentos al cargar
-    // La entrada del inicio va en CSS (keyframes), inmune a la carga de imágenes.
+
+    // Título del inicio palabra por palabra
+    const h1 = $(".hero h1");
+    if (h1 && !h1.dataset.split) {
+      h1.dataset.split = "1";
+      h1.innerHTML = h1.textContent.trim().split(/\s+/).map((w) => `<span class="w">${esc(w)}</span>`).join(" ");
+      h1.style.animation = "none";
+      gsap.from(".hero h1 .w", { yPercent: 110, opacity: 0, rotateX: -40, duration: .9, stagger: .07, ease: "power4.out", delay: .15 });
+    }
+
+    // Barra de progreso de lectura
+    const bar = $("#progressBar");
+    if (bar) gsap.to(bar, { width: "100%", ease: "none", scrollTrigger: { trigger: document.body, start: "top top", end: "bottom bottom", scrub: .3 } });
+
+    // Línea de tiempo que se dibuja al hacer scroll
+    const tl = $(".timeline");
+    if (tl) gsap.fromTo(tl, { "--draw": 0 }, { "--draw": 1, ease: "none", scrollTrigger: { trigger: tl, start: "top 80%", end: "bottom 60%", scrub: .5 } });
+
+    // Inclinación 3D en tarjetas
+    const tiltable = $$(".service, .feature, .mv, .event, .partner");
+    tiltable.forEach((card) => {
+      card.classList.add("tilt");
+      card.addEventListener("pointermove", (e) => {
+        const r = card.getBoundingClientRect(), x = (e.clientX - r.left) / r.width - .5, y = (e.clientY - r.top) / r.height - .5;
+        gsap.to(card, { rotateY: x * 10, rotateX: -y * 10, y: -6, duration: .4, ease: "power2.out", transformPerspective: 900, overwrite: "auto" });
+      });
+      card.addEventListener("pointerleave", () => gsap.to(card, { rotateY: 0, rotateX: 0, y: 0, duration: .6, ease: "power3.out", overwrite: "auto" }));
+    });
+
+    // Materiales: entrada con escala al filtrar
+    document.addEventListener("materials:rendered", () => gsap.from(".material", { scale: .85, opacity: 0, y: 14, duration: .5, stagger: .04, ease: "back.out(1.6)", clearProps: "all" }));
+
+    // Texto que se revela palabra por palabra a medida que se baja (ligado al scroll)
+    $$(".section__head h2, .section__head .section__lead, .about__lead, .band h2, .band p").forEach((el) => {
+      if (el.dataset.split || el.closest(".tab-panel:not(.is-active)")) return;
+      el.dataset.split = "1";
+      el.innerHTML = el.textContent.trim().split(/\s+/).map((w) => `<span class="sw">${esc(w)}</span>`).join(" ");
+      gsap.fromTo($$(".sw", el), { opacity: .12, y: 6 }, { opacity: 1, y: 0, stagger: .04, ease: "none",
+        scrollTrigger: { trigger: el, start: "top 88%", end: "top 45%", scrub: .4 } });
+    });
+
+    // Escena "Cómo funciona": el símbolo de reciclaje se arma flecha por flecha y enciende cada paso
+    const scene = $("#proceso .process__grid");
+    if (scene) {
+      const arcs = $$(".recycle-draw .arc"), heads = $$(".recycle-draw .head"), steps = $$("#proceso .steps li");
+      arcs.forEach((a) => { const L = a.getTotalLength(); a.style.strokeDasharray = L; a.style.strokeDashoffset = L; });
+      const pin = window.innerWidth >= 1024;
+      const tlScene = gsap.timeline({ scrollTrigger: { trigger: "#proceso", start: pin ? "top top" : "top 75%", end: pin ? "+=1600" : "bottom 40%", scrub: .6, pin, anticipatePin: 1 } });
+      arcs.forEach((a, i) => {
+        tlScene.to(a, { strokeDashoffset: 0, duration: 1, ease: "none" }, i * 1.3)
+               .to(heads[i], { opacity: 1, scale: 1, duration: .25, ease: "back.out(2)" }, i * 1.3 + .95);
+      });
+      tlScene.to(".recycle-draw .core-text", { opacity: 1, duration: .4 }, arcs.length * 1.3)
+             .to(".recycle-draw", { rotate: 360, duration: 1.2, ease: "power1.inOut", transformOrigin: "50% 50%" }, arcs.length * 1.3);
+      // al retroceder, los pasos se apagan en orden inverso
+      tlScene.eventCallback("onUpdate", () => { const p = tlScene.progress() * (arcs.length * 1.3 + 1.6); steps.forEach((s, i) => s.classList.toggle("is-on", p >= i * 1.3 + .6)); });
+    }
+
+    // Encabezados de sección marcan visible (línea del kicker) y pasos (línea conectora)
+    const marks = new IntersectionObserver((es) => es.forEach((en) => { if (en.isIntersecting) { en.target.classList.add("is-visible"); marks.unobserve(en.target); } }), { threshold: .3 });
+    $$(".section__head, .steps").forEach((el) => marks.observe(el));
 
     // Parallax suave en fondos fotográficos
     $$(".bg img").forEach((img) => {
@@ -322,7 +385,7 @@
     });
 
     // Aparición escalonada (IntersectionObserver dispara; GSAP anima)
-    const items = $$(REVEAL).filter((el) => !el.closest(".hero"));
+    const items = $$(REVEAL).filter((el) => !el.closest(".hero") && !el.closest(".process__grid"));
     gsap.set(items, { y: 26, opacity: 0 });
     const show = (els) => gsap.to(els, { y: 0, opacity: 1, duration: .8, stagger: .09, ease: "power3.out", overwrite: true });
     let pending = [], flush = 0;
