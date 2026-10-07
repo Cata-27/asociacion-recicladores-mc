@@ -42,7 +42,7 @@
 
 | Quiero cambiar… | Dónde |
 |---|---|
-| Teléfono / WhatsApp | Buscar `573203023519` en `index.html` y `app.js` (constante `WA_NUMBER`) |
+| Teléfonos | `app.js` → objeto `CONTACT` al inicio: `MAIN` (principal: contacto, pie, barra superior, botón flotante) y `PICKUP` (secundario: solicitudes de recolección / ruta verde). Cambiar `e164` (57 + número) y `display`; todos los enlaces se actualizan solos. |
 | Dirección, NIT, textos | `index.html`, buscar el texto |
 | Materiales | `app.js` → arreglo `MATERIALS` |
 | Rutas | `app.js` → arreglo `ROUTES` |
