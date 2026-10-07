@@ -19,7 +19,8 @@
 | Patrimonio neto (2024) | ~ $103 millones COP | Directorio empresarial |
 | Correo institucional | ⚠️ No encontrado — pedir a la clienta | — |
 | Redes sociales | ⚠️ No encontradas — pedir a la clienta | — |
-| Horario de atención | ⚠️ Lun–Vie 7 a.m.–5 p.m., Sáb 7 a.m.–12 m. (supuesto) | — |
+| Horario de atención | Lun–Vie 7:00 a. m.–6:00 p. m., Sáb 7:00 a. m.–5:00 p. m. | Clienta (Word 06/10/2026) |
+| Sede / ECA | Carrera 34 # 61-71, barrio La Floresta (comuna 3) | Clienta (Word 06/10/2026) |
 
 **E.S.P.** = Empresa de Servicios Públicos. La asociación presta el servicio público de aseo en la **actividad complementaria de aprovechamiento** (Decreto 596 de 2016), por lo que está vigilada por la Superintendencia de Servicios Públicos Domiciliarios (SSPD) y debe estar inscrita en el RUPS y reportar al SUI.
 
@@ -83,6 +84,27 @@ Como E.S.P., además **factura el componente de aprovechamiento** dentro de la f
 | PQRS con radicado | ⚠️ | Se guarda en el navegador; falta backend |
 
 ---
+
+## 4b. Cambios solicitados por la clienta (06/10/2026)
+
+Fuente: `docs/clienta/2026-10-06 cambios solicitados.docx` y correos de Rol Mary Castaño (anacatalinat5@gmail.com, 06/10/2026).
+
+| Solicitud | Estado |
+|---|---|
+| Horarios: L–V 7–6 p. m., Sáb 7–5 p. m. | ✅ aplicado |
+| ECA propia en barrio La Floresta | ✅ aplicado |
+| Materiales: "Chatarra" (no "ferrosa"), incluir latas (sardinas), menos texto | ✅ aplicado; fotos de materiales pendientes |
+| Vigilancia: añadir la CRA | ✅ aplicado |
+| Documentos: quitar Tarifas, Política de datos y RTE; añadir Cámara de Comercio, RUPS, RUT, CCU-concepto de legalidad, Certificado de permanencia (Alcaldía), Negocios Verdes, Bomberos, ARL y pensión, competencias SENA | ✅ lista aplicada; 4 PDF recibidos por correo, 5 pendientes (se muestran como "Solicitar copia") |
+| Sección Eventos con fotos | ✅ sección creada con 5 eventos; fotos recibidas por correo, pendientes de incorporar |
+| Aliados estratégicos | ✅ sección creada (Secretaría de Medio Ambiente y Transición Energética, Veolia, C.C. San Silvestre); logos pendientes |
+| Portafolio | ✅ botón y entrada en Documentos; PDF pendiente |
+| "Únete a nuestra ruta verde" | ✅ el formulario de recolección pasó a ser la inscripción a la ruta verde |
+| Contador de visitas | ✅ en el pie |
+| Rutas de recolección reales | ⏳ la clienta las enviará |
+| Número principal nuevo y número secundario "el de Mary" | ⏳ pendiente de la clienta |
+| Fotos: ECA, materiales (chatarra), "Nuestra labor" | ⏳ pendientes |
+| Logo vectorial (PDF en curvas) y mascota | ✅ recibidos por correo; pendiente de incorporar |
 
 ## 5. Preguntas para la clienta
 
