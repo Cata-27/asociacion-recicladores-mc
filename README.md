@@ -14,7 +14,8 @@ Sitio web institucional para la **Asociación de Recicladores MC E.S.P.** (NIT 9
 - **Rutas de recolección**: buscador por barrio y filtro por día.
 - **Galería** con lightbox.
 - **Contáctanos**, **Pague su factura** y **PQRS** con número de radicado y consulta de estado (guardado en el navegador).
-- 100 % responsive, sin dependencias ni build: HTML + CSS + JS puro.
+- **Escenas animadas con Remotion**: el logo con materiales en órbita en el inicio y una película de tres actos en "Cómo funciona" que avanza con el scroll (código en `motion/`).
+- 100 % responsive, sin build para publicar: HTML + CSS + JS puro (las escenas van precompiladas en `assets/js/motion.js`).
 
 ## Ver en local
 

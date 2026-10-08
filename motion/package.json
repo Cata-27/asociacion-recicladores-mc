@@ -1,0 +1,19 @@
+{
+  "name": "mc-motion",
+  "private": true,
+  "description": "Escenas animadas del sitio hechas con Remotion. Se compilan a ../assets/js/motion.js",
+  "scripts": {
+    "build": "node build.mjs",
+    "studio": "remotion studio src/index.jsx"
+  },
+  "dependencies": {
+    "@remotion/player": "4.0.354",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "remotion": "4.0.354"
+  },
+  "devDependencies": {
+    "@remotion/cli": "4.0.354",
+    "esbuild": "0.25.10"
+  }
+}

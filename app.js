@@ -313,6 +313,17 @@
   const onScroll = () => header.classList.toggle("is-scrolled", window.scrollY > 8);
   window.addEventListener("scroll", onScroll, { passive: true }); onScroll();
 
+  // Escenas hechas con Remotion (código en motion/, compilado en assets/js/motion.js).
+  // Si el archivo no carga, se quedan el logo y el símbolo de reciclaje estáticos.
+  const motion = !reduced && window.MCMotion;
+  const heroBox = $(".hero__motion");
+  const hero = motion && heroBox ? motion.mount(heroBox, "hero", { logoSrc: $(".hero__logo img").getAttribute("src") }) : null;
+  if (hero) {
+    heroBox.parentElement.classList.add("has-motion");
+    // pausar cuando el inicio no está en pantalla, para no gastar batería
+    new IntersectionObserver(([en]) => (en.isIntersecting ? hero.play() : hero.pause())).observe(heroBox);
+  }
+
   if (window.gsap && window.ScrollTrigger && !reduced) {
     gsap.registerPlugin(ScrollTrigger);
 
@@ -358,9 +369,19 @@
         scrollTrigger: { trigger: el, start: "top 88%", end: "top 45%", scrub: .4 } });
     });
 
-    // Escena "Cómo funciona": el símbolo de reciclaje se arma flecha por flecha y enciende cada paso
+    // Escena "Cómo funciona": película de Remotion en tres actos que avanza con el scroll y enciende cada paso
     const scene = $("#proceso .process__grid");
-    if (scene) {
+    const procBox = $(".assemble__motion");
+    const proc = motion && scene && procBox ? motion.mount(procBox, "proceso") : null;
+    if (proc) {
+      procBox.parentElement.classList.add("has-motion");
+      const steps = $$("#proceso .steps li"), pin = window.innerWidth >= 1024, st = { p: 0 };
+      gsap.to(st, { p: 1, ease: "none",
+        // en móvil no se fija: la película corre mientras su recuadro cruza la pantalla
+        scrollTrigger: pin ? { trigger: "#proceso", start: "top top", end: "+=2400", scrub: .6, pin: true, anticipatePin: 1 } : { trigger: procBox, start: "top 90%", end: "bottom 35%", scrub: .6 },
+        onUpdate: () => { proc.seek(st.p); steps.forEach((s, i) => s.classList.toggle("is-on", st.p >= i / 3 + .02)); } });
+    } else if (scene) {
+      // Respaldo: el símbolo de reciclaje se arma flecha por flecha
       const arcs = $$(".recycle-draw .arc"), heads = $$(".recycle-draw .head"), steps = $$("#proceso .steps li");
       arcs.forEach((a) => { const L = a.getTotalLength(); a.style.strokeDasharray = L; a.style.strokeDashoffset = L; });
       const pin = window.innerWidth >= 1024;
