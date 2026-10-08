@@ -4,7 +4,8 @@
 
 ## Stack
 
-- **HTML + CSS + JavaScript puro.** Sin frameworks, sin build, sin dependencias de npm. Se abre directamente o con cualquier servidor estático.
+- **HTML + CSS + JavaScript puro.** Sin frameworks ni build para publicar. Se abre directamente o con cualquier servidor estático.
+- **Escenas animadas con [Remotion](https://www.remotion.dev)** (React): el código vive en `motion/` y se compila a un solo archivo, `assets/js/motion.js`, que ya va en el repo. La página no necesita npm; solo quien edite las escenas. Ver "Editar las escenas animadas" abajo.
 - Archivos: `index.html` (estructura y contenido), `styles.css` (diseño), `app.js` (comportamiento), `assets/` (imágenes y PDFs).
 - Fuentes: Google Fonts (Manrope), cargada por CDN.
 - Íconos: SVG en línea (sprite `<symbol>` al inicio de `index.html`). No se usan emojis ni librerías de íconos.
@@ -30,7 +31,7 @@
 | 13 | Pague su factura | `#factura` | Explicación de cómo se cobra el aprovechamiento + consulta de cuenta por WhatsApp. | ⚠️ sin pasarela |
 | 14 | PQRS con radicado | `#pqrs` · `app.js` "PQRS" | Al radicar, genera un número `MC-AAAA-NNNNNN`, lo muestra en un modal y ofrece enviar copia por WhatsApp. El radicado se guarda en el `localStorage` del navegador del usuario (solo él puede consultarlo desde ese mismo equipo). | ⚠️ sin backend |
 | 15 | Botón flotante de WhatsApp | global | Enlace `wa.me` con mensaje predefinido. | ✅ |
-| 16 | Animaciones | `styles.css` · `app.js` "Animaciones" · GSAP 3.12 + ScrollTrigger | **Inicio:** título palabra por palabra, zoom lento (Ken Burns) en la foto, aurora de color, brillo en el botón, indicador de scroll. **Global:** barra de progreso de lectura, cinta de materiales en movimiento continuo, títulos y textos que se revelan palabra por palabra ligados al scroll, tarjetas con inclinación 3D al pasar el mouse, íconos que saltan, parallax en fondos, subrayado animado en el menú, pulso en el botón de WhatsApp, contador de visitas que cuenta. **Cómo funciona:** escena fijada en escritorio donde el símbolo de reciclaje se dibuja flecha por flecha al bajar y enciende cada paso; en móvil se arma sin fijar. Siempre activas (decisión de la clienta); `?motion=0` las apaga para pruebas. | ✅ |
+| 16 | Animaciones | `styles.css` · `app.js` "Animaciones" · GSAP 3.12 + ScrollTrigger | **Inicio:** título palabra por palabra, zoom lento (Ken Burns) en la foto, aurora de color, brillo en el botón, indicador de scroll. **Global:** barra de progreso de lectura, cinta de materiales en movimiento continuo, títulos y textos que se revelan palabra por palabra ligados al scroll, tarjetas con inclinación 3D al pasar el mouse, íconos que saltan, parallax en fondos, subrayado animado en el menú, pulso en el botón de WhatsApp, contador de visitas que cuenta. **Escenas Remotion:** en el inicio, el logo con los materiales girando en órbita y cayendo en él uno a uno (bucle de 12 s, se pausa fuera de pantalla). En "Cómo funciona", una película de tres actos (separar en la bolsa blanca → el reciclador se la lleva en triciclo → se pesa, clasifica, certifica y el ciclo se cierra) que avanza con el scroll y enciende cada paso; en escritorio la sección se fija, en móvil corre mientras el recuadro cruza la pantalla. Si `motion.js` no carga, quedan el logo y el símbolo de reciclaje estáticos. Siempre activas (decisión de la clienta); `?motion=0` las apaga para pruebas. | ✅ |
 | 17 | Fondos fotográficos | `.bg` en inicio, "Cómo funciona" y banda Empresas · `assets/img/bg-*.webp` | Imágenes generadas con IA (Higgsfield, gpt-image) en paleta azul/verde, sin personas identificables ni texto. Dos tamaños por imagen (`-sm` 960 px para móvil, 1920 px escritorio) vía `srcset`; capa oscura degradada encima para legibilidad. Reemplazables por fotos reales de la asociación con el mismo nombre + versión. | ✅ (IA, sustituir por fotos reales) |
 | 18 | Banda Empresas e instituciones | `#empresas` | Llamado a la acción para clientes corporativos (certificados, plan de manejo) con enlace a Contacto. | ✅ |
 | 19 | Eventos | `#eventos` · `app.js` `EVENTS` | Tarjetas generadas desde el arreglo `EVENTS` (título, lugar, descripción, foto en `assets/img/eventos/`). Si la foto no existe, la tarjeta muestra un fondo neutro. | ✅ fotos por incorporar |
@@ -50,6 +51,20 @@
 | Logotipo | Reemplazar `assets/img/logo-hd.webp` (cuadrado, fondo transparente) y `assets/img/favicon-hd.png`. **Importante:** los assets se sirven con caché de 7 días; al cambiar una imagen, cambiar también su nombre de archivo (ej. `logo-v3.webp`) para que los navegadores descarguen la nueva. |
 | PDFs | Reemplazar en `assets/docs/` con el mismo nombre |
 | Colores | `styles.css` → variables al inicio (`:root`) |
+
+## Editar las escenas animadas (Remotion)
+
+Requiere Node 18+. Desde la carpeta `motion/`:
+
+```bash
+npm install
+npm run studio   # abre Remotion Studio para ver y ajustar las escenas cuadro a cuadro
+npm run build    # recompila assets/js/motion.js (hay que subir ese archivo)
+```
+
+- `src/HeroCiclo.jsx`: escena del inicio. `src/ProcesoEscena.jsx`: escena de "Cómo funciona". `src/materiales.jsx`: dibujos de los materiales y colores de la marca.
+- Todo se dibuja en SVG con código: no se usan imágenes ni videos (salvo el logo), así el sitio no pesa más.
+- Licencia: Remotion es gratis para personas, empresas de hasta 3 empleados y organizaciones sin ánimo de lucro (la asociación lo es).
 
 ## Manejo de espacio y archivos pesados
 
